@@ -19,7 +19,10 @@ for i, character in enumerate(common_chinese_characters):
     draw = ImageDraw.Draw(image)
     draw.text((0,-2), character, font=font, fill=0)
     # 保存图片
-    image.save(f'out\\{i}.png')
+    # 保存图片
+    unicode_hex_name = f'{ord(character):04x}'  # 获取字符的 Unicode 编码，并转换为四位十六进制数
+    image.save(f'out\\{unicode_hex_name}.png')
+
     print(f"{i/len(common_chinese_characters)}%")
     if i>300:
         break
